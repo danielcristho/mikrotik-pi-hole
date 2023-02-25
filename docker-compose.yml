@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+    routeros-7.1:
+      image: evilfreelancer/docker-routeros:7.1beta6
+      container_name: chr-6.48.3
+      restart: unless-stopped
+      cap_add:
+        - NET_ADMIN
+      devices:
+      - /dev/net/tun
+      ports:
+        - "22222:22"
+        - "22223:23"
+        - "28728:8728"
+        - "28729:8729"
+      networks:
+        radius:
+          ipv4_address: 10.0.0.2
+
+networks:
+  radius:
+    ipam:
+      config:
+        - subnet: 10.0.0.0/24
+
