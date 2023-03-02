@@ -31,11 +31,11 @@ services:
   #     - "28728:8728"
   #     - "28729:8729"
 
-  routeros-7.7-stable:
+  routeros-7.8-stable:
       build:
         context: .
         dockerfile: Dockerfile
-      container_name: chr-7.7-stable
+      container_name: chr-7.8-stable
       restart: unless-stopped
       cap_add:
         - NET_ADMIN
@@ -48,10 +48,10 @@ services:
         - "28729:8729"
       networks:
         pinet:
-          ipv4_address: 10.0.1.2
+          ipv4_address: 172.16.0.2
 
 networks:
   pinet:
     ipam:
       config:
-        - subnet: 10.0.1.0/24
+        - subnet: 172.16.0.0/29
